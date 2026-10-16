@@ -1,0 +1,38 @@
+# Device/raw backups and generated conversion state
+*.mtd0
+*.mtd1
+*.mtd2
+mtd*.bin
+full-mtd*.bin
+backups/
+work/
+workdir/
+t75-work-*/
+
+# Firmware/source packs are inputs, not repository content
+firmware/
+source-packs/
+*.img
+*.ubi
+*.ubifs
+*.zip
+
+# Extracted/generated payloads
+bootfs.bin
+rootfs.bin
+zydefault.bin
+zyfwinfo.bin
+zyfwsign.bin
+loader.bin
+manifest.local.json
+sourcepack.local.conf
+
+# Credentials / logs / temporary files
+*.log
+*.bak
+*.tmp
+*.orig
+.env
+__pycache__/
+*.pyc
+.DS_Store
