@@ -1,0 +1,30 @@
+{
+  "generic": {
+    "sha256": "2f26785f4dea08dced0b545dc2e6ac28b2de84cfb259df9f39095961909677fb",
+    "placeholders": {
+      "SerialNumber": "T75_TEMPLATE",
+      "SN81": "T75_TEMPLATE",
+      "ethaddr": "02:00:00:00:00:00",
+      "admin": "T75_TEMPLATE",
+      "supervisor": "T75_TEMPLATE",
+      "WpaPskKey": "T75_TEMPLATE",
+      "EngDebugFlag": "00",
+      "once": "true"
+    },
+    "old_sensitive_values_absent": false
+  },
+  "odido": {
+    "sha256": "e9e31d094876099be2d5177545dc0a395ff5aa96c662275db3057e55a51ac78e",
+    "placeholders": {
+      "SerialNumber": "T75_TEMPLATE",
+      "SN81": "T75_TEMPLATE",
+      "ethaddr": "02:00:00:00:00:00",
+      "admin": "T75_TEMPLATE",
+      "supervisor": "T75_TEMPLATE",
+      "WpaPskKey": "T75_TEMPLATE",
+      "EngDebugFlag": "00",
+      "once": "true"
+    },
+    "old_sensitive_values_absent": true
+  }
+}
