@@ -16,16 +16,16 @@ For a raw dump whose family cannot be inferred safely:
 python3 tools/t75_sourcepack.py full-mtd0.bin source-packs/ODIDO --family odido
 ```
 
-## 2. Supply local loader templates
+## 2. Verify bundled loader templates
 
-Vendor update packages normally do not contain SPL/TPL. Keep the two anonymized family loader templates outside Git and copy them locally as:
+Vendor update packages normally do not contain SPL/TPL. The repository includes the two anonymized family loader templates:
 
 ```text
 templates/loader-generic.bin.gz
 templates/loader-odido.bin.gz
 ```
 
-Use `tools/audit_loader_template.py` before testing them.
+Verify both templates with `python3 tools/audit_loader_template.py templates/loader-generic.bin.gz templates/loader-odido.bin.gz` before use. See [LICENSING.md](LICENSING.md) for provenance and licensing notes.
 
 ## 3. Copy repository + source pack to USB
 

@@ -10,9 +10,14 @@ It is intentionally conservative: stage and verify first, commit only after hash
 - UART connected and logging;
 - a USB stick containing this repository;
 - a prepared ACHN 2.1 source pack;
-- local anonymized generic loader template at:
-  `templates/loader-generic.bin.gz`;
+- the bundled anonymized generic loader template at `templates/loader-generic.bin.gz`;
 - enough USB space for a full NAND backup.
+
+Before starting, verify the bundled templates on a PC:
+
+```sh
+python3 tools/audit_loader_template.py templates/loader-generic.bin.gz templates/loader-odido.bin.gz
+```
 
 ## 1. Mount the USB executable
 

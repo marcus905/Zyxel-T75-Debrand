@@ -27,10 +27,6 @@ loader.bin
 manifest.local.json
 sourcepack.local.conf
 
-# Local proprietary family loader templates: keep out of Git history
-templates/*.bin
-templates/*.bin.gz
-
 # Credentials / logs / temporary files
 *.log
 *.bak

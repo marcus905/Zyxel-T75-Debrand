@@ -11,7 +11,7 @@
       "EngDebugFlag": "00",
       "once": "true"
     },
-    "old_sensitive_values_absent": false
+    "old_sensitive_values_absent": true
   },
   "odido": {
     "sha256": "e9e31d094876099be2d5177545dc0a395ff5aa96c662275db3057e55a51ac78e",
