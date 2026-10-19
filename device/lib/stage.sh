@@ -31,7 +31,11 @@ create(){
 
 create "bootfs$TARGET_SLOT" "$BOOTFS_ID" static "$BOOTFS_SIZE" "$PAYLOAD_DIR/bootfs.bin" "$BOOTFS_SHA256"
 create "rootfs$TARGET_SLOT" "$ROOTFS_ID" dynamic "$ROOTFS_SIZE" "$PAYLOAD_DIR/rootfs.bin" "$ROOTFS_SHA256"
-create "zydefault$TARGET_SLOT" "$ZYDEFAULT_ID" static "$ZYDEFAULT_SIZE" "$PAYLOAD_DIR/zydefault.bin" "$ZYDEFAULT_SHA256"
+# zydefault is a static UBIFS image, but its UBI volume is provisioned at
+# 23 LEBs on both known stock families. The FIT payload itself is only 13 LEBs.
+# Do not confuse payload length with UBI reserved capacity.
+ZYDEFAULT_VOL_SIZE=5840896
+create "zydefault$TARGET_SLOT" "$ZYDEFAULT_ID" static "$ZYDEFAULT_VOL_SIZE" "$PAYLOAD_DIR/zydefault.bin" "$ZYDEFAULT_SHA256"
 create "zyfwinfo$TARGET_SLOT" "$ZYFWINFO_ID" static "$ZYFWINFO_SIZE" "$PAYLOAD_DIR/zyfwinfo.bin" "$ZYFWINFO_SHA256"
 
 if [ "$ZYFWSIGN_PRESENT" = 1 ]; then
