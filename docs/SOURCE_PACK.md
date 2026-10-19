@@ -9,8 +9,8 @@ The source-pack format makes the on-device converter independent of where firmwa
 - a public vendor `.bin`;
 - a vendor `.zip` containing a firmware `.bin`;
 - a previous converter backup directory;
-- a raw UBI `mtd2` image;
-- a full raw `mtd0` image.
+- an ECC-corrected logical UBI `mtd2` image;
+- an ECC-corrected logical full `mtd0` image.
 
 ## Logical output
 
@@ -27,12 +27,12 @@ loader.bin     # only when source supplied a loader
 
 A public Zyxel update normally does not contain SPL/TPL, so it produces a source pack without `loader.bin`. The device converter then uses the bundled anonymized family loader template.
 
-When a raw NAND image or exact converter backup contains a loader, the source-pack tool anonymizes its reusable `loader.bin`; the original exact backup is not modified.
+When a logical MTD image or exact converter backup contains a loader, the source-pack tool anonymizes its reusable `loader.bin`; the original exact backup is not modified.
 
 ## Family detection
 
 The tool primarily distinguishes families from `zyfwsign` presence and `zyfwinfo` branch information (`ACHN` vs `ACDA`). Unknown inputs should be supplied with an explicit family override rather than guessed.
 
-## Why logical UBI extraction matters
+## Why ECC-corrected logical UBI extraction matters
 
-Raw NAND dumps contain EC/VID headers, erase counters, wear-leveling history and obsolete physical PEBs. The source pack reconstructs logical UBI volume payloads and does not copy raw UBI placement into another device.
+Logical MTD dumps still contain UBI EC/VID headers, erase counters, wear-leveling history and obsolete physical PEBs. The source pack reconstructs logical UBI volume payloads and does not copy physical UBI placement into another device.\n\nDo **not** use a data-only dump captured with `nanddump -n`: that option bypasses NAND ECC, so corrected bit errors are lost and cannot be reconstructed later without the corresponding OOB/ECC information. Converter-generated full backups use ECC-corrected reads.

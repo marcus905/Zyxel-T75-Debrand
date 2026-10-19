@@ -13,6 +13,10 @@ check(){
 check "bootfs$TARGET_SLOT" "$BOOTFS_ID" "$BOOTFS_SIZE" "$BOOTFS_SHA256"
 check "rootfs$TARGET_SLOT" "$ROOTFS_ID" "$ROOTFS_SIZE" "$ROOTFS_SHA256"
 check "zydefault$TARGET_SLOT" "$ZYDEFAULT_ID" "$ZYDEFAULT_SIZE" "$ZYDEFAULT_SHA256"
+zys=$(vol_sys "$ZYDEFAULT_ID")
+[ "$(cat "$zys/type")" = static ] || die "zydefault$TARGET_SLOT is not static"
+[ "$(cat "$zys/reserved_ebs")" -eq 23 ] || die "zydefault$TARGET_SLOT does not reserve 23 LEBs"
+echo "PASS zydefault$TARGET_SLOT geometry: static, 23 LEBs"
 check "zyfwinfo$TARGET_SLOT" "$ZYFWINFO_ID" "$ZYFWINFO_SIZE" "$ZYFWINFO_SHA256"
 if [ "$ZYFWSIGN_PRESENT" = 1 ]; then
     check "zyfwsign$TARGET_SLOT" "$ZYFWSIGN_ID" "$ZYFWSIGN_SIZE" "$ZYFWSIGN_SHA256"

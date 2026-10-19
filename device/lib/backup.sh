@@ -6,7 +6,8 @@ HERE=$(CDPATH= cd -- "$(dirname -- "$0")" && pwd)
 ROOT=$1
 FULL=${2:-0}
 mkdir -p "$ROOT"
-for x in nanddump sha256sum head cp ubinfo; do need "$x"; done
+for x in sha256sum head cp ubinfo dd; do need "$x"; done
+[ "$FULL" = 1 ] && need nanddump
 
 TMP=/tmp/t75-meta.$$
 trap 'rm -f "$TMP"*' EXIT INT TERM
@@ -21,7 +22,7 @@ LOADER_MTD=$(find_mtd_num_by_name loader); [ -n "$LOADER_MTD" ] || die "loader M
 NAND_MTD=$(find_mtd_num_by_name brcmnand.0); [ -n "$NAND_MTD" ] || NAND_MTD=0
 
 echo "Backing up loader..."
-nanddump -n -l 2097152 -f "$ROOT/loader.bin" "/dev/mtd$LOADER_MTD" >/dev/null
+dd if="/dev/mtd$LOADER_MTD" of="$ROOT/loader.bin" bs=262144 count=8 2>/dev/null
 sha256sum "$ROOT/loader.bin" > "$ROOT/loader.sha256"
 
 cp /proc/mtd "$ROOT/proc-mtd.txt"
@@ -104,7 +105,7 @@ done
 
 if [ "$FULL" = 1 ]; then
     echo "Creating full logical NAND backup; this requires roughly 512 MiB free..."
-    nanddump -n -f "$ROOT/full-mtd0.bin" "/dev/mtd$NAND_MTD" >/dev/null
+    nanddump -f "$ROOT/full-mtd0.bin" "/dev/mtd$NAND_MTD" >/dev/null
     sha256sum "$ROOT/full-mtd0.bin" > "$ROOT/full-mtd0.sha256"
 fi
 

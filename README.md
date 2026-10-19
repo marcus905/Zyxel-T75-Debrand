@@ -6,7 +6,7 @@ The project deliberately separates **family conversion** from ordinary firmware 
 
 ## Current status
 
-The converter is built from offline analysis of complete stock and Odido NAND dumps plus public Zyxel firmware packages. An **Odido T75 -> generic Zyxel V5.18(ACHN.2.1)C0 conversion has now completed successfully on hardware**, including the destination U-Boot one-shot reset, generic `rootfs2` boot, `zydefault` mount, configuration initialization, Wi-Fi bring-up, web UI, a normal second boot, and a generic factory reset followed by another successful boot. Reverse conversion and additional-device testing remain experimental. Keep UART attached and retain a verified full NAND backup off-device.
+The converter is built from offline analysis of complete stock and Odido NAND dumps plus public Zyxel firmware packages. An **Odido T75 -> generic Zyxel V5.18(ACHN.2.1)C0 conversion has now completed successfully on hardware**, including the destination U-Boot one-shot reset, generic `rootfs2` boot, `zydefault` mount, configuration initialization, Wi-Fi bring-up, web UI, a normal second boot, and a generic factory reset followed by another successful boot. Reverse conversion and additional-device testing remain experimental. Keep UART attached and retain a verified full ECC-corrected logical NAND backup off-device.
 
 ## Repository layout
 
@@ -48,14 +48,14 @@ See [docs/HOWTO.md](docs/HOWTO.md) for the field-tested end-to-end procedure and
 
 ## Artifact separation
 
-The repository intentionally does **not** contain full firmware payloads, raw NAND/device backups, or device credentials. It does include the two anonymized 2 MiB family loader templates used by the converter:
+The repository intentionally does **not** contain full firmware payloads, NAND/device backups, or device credentials. It does include the two anonymized 2 MiB family loader templates used by the converter:
 
 - `templates/loader-generic.bin.gz`
 - `templates/loader-odido.bin.gz`
 
 For a conversion, provide a destination firmware/source pack separately; backups/work directories are generated locally by `device/t75.sh`.
 
-`tools/t75_sourcepack.py` anonymizes any loader extracted from a raw device dump before it is reused as a source-pack template. The original exact backup is never modified.
+`tools/t75_sourcepack.py` anonymizes any loader extracted from a logical device dump before it is reused as a source-pack template. The original exact backup is never modified.
 
 See [docs/LICENSING.md](docs/LICENSING.md) for loader-template provenance and the Zyxel GPL/OSS source-request link.
 
@@ -71,4 +71,4 @@ See [docs/LICENSING.md](docs/LICENSING.md) for loader-template provenance and th
 
 ## Disclaimer
 
-This software writes bootloader/NAND state and can brick hardware if the assumptions do not match the target device. Review the scripts and documentation, keep UART recovery available, and retain a verified raw backup before testing.
+This software writes bootloader/NAND state and can brick hardware if the assumptions do not match the target device. Review the scripts and documentation, keep UART recovery available, and retain a verified ECC-corrected logical backup before testing.

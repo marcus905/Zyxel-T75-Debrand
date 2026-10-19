@@ -16,11 +16,11 @@ if [ -r "/sys/class/mtd/mtd${LOADER_MTD}/bad_blocks" ]; then
     bb=$(cat "/sys/class/mtd/mtd${LOADER_MTD}/bad_blocks")
     [ "$bb" = 0 ] || die "loader partition reports $bb bad block(s)"
 fi
-for x in nanddump nandwrite flash_erase sha256sum openssl sync; do need "$x"; done
+for x in dd nandwrite flash_erase sha256sum openssl sync; do need "$x"; done
 
 RUN="$WORKDIR/commit-$(next_stamp)"
 mkdir -p "$RUN"
-nanddump -n -l 2097152 -f "$RUN/loader.before.bin" "/dev/mtd$LOADER_MTD" >/dev/null
+dd if="/dev/mtd$LOADER_MTD" of="$RUN/loader.before.bin" bs=262144 count=8 2>/dev/null
 sha256sum "$RUN/loader.before.bin" > "$RUN/loader.before.sha256"
 
 out=$("$HERE/build-loader.sh" "$SOURCE_FAMILY" "$DEST_FAMILY" "$LOADER_TEMPLATE" "$RUN/loader.destination.bin" "$ENGDEBUG" "${RESET_SHARED:-1}")

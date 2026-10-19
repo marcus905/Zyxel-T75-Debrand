@@ -13,7 +13,7 @@ Same-family upgrades are intentionally out of scope.
 
 ### 1. Source normalization
 
-`tools/t75_sourcepack.py` converts supported inputs into a common logical source-pack format. Supported inputs include public vendor firmware, previous converter backups, raw `mtd2`, and full raw `mtd0`.
+`tools/t75_sourcepack.py` converts supported inputs into a common logical source-pack format. Supported inputs include public vendor firmware, previous converter backups, ECC-corrected logical `mtd2` images, and ECC-corrected logical full `mtd0` images.
 
 A source pack carries logical firmware payloads and, when available, an anonymized loader template. It never carries another device's live identity intentionally.
 
@@ -21,7 +21,7 @@ A source pack carries logical firmware payloads and, when available, an anonymiz
 
 `device/t75.sh prepare` reads both metadata copies, validates their CRCs, requires them to agree, cross-checks `COMMITTED` against the running `rootfsN`, and chooses the other slot.
 
-The active slot is backed up along with the current 2 MiB loader, shared volumes, environment, partition map and UBI information. An optional full NAND backup can also be created.
+The active slot is backed up along with the current 2 MiB loader, shared volumes, environment, partition map and UBI information. An optional full ECC-corrected logical NAND backup can also be created.
 
 The destination firmware is staged entirely into the inactive slot and read back before any loader change.
 

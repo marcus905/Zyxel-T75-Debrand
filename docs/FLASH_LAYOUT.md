@@ -22,7 +22,7 @@ The physical MTD layout is the same across the analyzed Odido and stock devices.
 | zyfwinfo | 18 | 19 |
 | zyfwsign | 20 | 21 |
 
-`zyfwsign` exists for Odido and is absent for generic firmware.
+`zyfwsign` exists for Odido and is absent for generic firmware.\n\nOn both analyzed stock families, `zydefaultN` is a **static** UBI volume with **23 reserved LEBs** (LEB size 253,952 bytes). The filesystem payload may occupy fewer LEBs; ACHN 2.1 uses 13 LEBs / 3,301,376 bytes. Volume capacity and payload length must therefore be treated separately.
 
 Shared volumes:
 

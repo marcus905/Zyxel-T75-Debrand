@@ -18,7 +18,7 @@ These materials are also suitable for producing a reverse-family source pack lat
 
 ## Full backup
 
-`--full-backup` additionally saves the complete raw NAND (`mtd0`). This is the preferred disaster-recovery artifact and should be stored off-device.
+`--full-backup` additionally saves a complete **ECC-corrected logical** `mtd0` image. It contains the 512 MiB MTD data area but not NAND OOB bytes. This is the preferred converter-level disaster-recovery artifact and should be stored off-device.\n\nDo not substitute a `nanddump -n` data-only image for this purpose: `-n` bypasses ECC and can preserve correctable bit errors as corrupted data.
 
 ## Shared state
 

@@ -6,10 +6,10 @@ Accepted inputs:
   * vendor .bin
   * vendor .zip containing a .bin
   * converter backup directory (backup.conf/sourcepack.conf)
-  * raw 512MiB mtd0 dump (loader + image UBI)
-  * raw image/mtd2 UBI dump (firmware payloads only)
+  * ECC-corrected logical 512MiB mtd0 dump (loader + image UBI)
+  * ECC-corrected logical image/mtd2 UBI dump (firmware payloads only)
 
-Output is a directory with sourcepack.conf + logical payload files.
+Output is a directory with sourcepack.conf + logical payload files.\nDo not use dumps captured with nanddump -n: ECC-bypassed bit errors cannot be\nrepaired from a data-only dump and may silently corrupt extracted payloads.
 A public vendor update intentionally has no loader; the USB converter then uses
 its known-good family loader template.
 """
@@ -151,6 +151,7 @@ def raw_ubi(inp,out,family_override=None):
     for slot, ids in [(1,(3,4,16,18,20)),(2,(5,6,17,19,21))]:
         if all(x in vols for x in ids[:4]): candidates.append((slot,ids))
     if not candidates: raise SystemExit("raw UBI contains no complete firmware slot")
+    if len(candidates)>1: raise SystemExit("raw UBI contains two complete firmware slots; use a vendor update or converter backup directory instead")
     slot,ids=candidates[0]
     names=["bootfs","rootfs","zydefault","zyfwinfo","zyfwsign"]
     meta={}

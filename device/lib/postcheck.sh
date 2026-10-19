@@ -3,9 +3,10 @@ set -eu
 HERE=$(CDPATH= cd -- "$(dirname -- "$0")" && pwd)
 . "$HERE/t75-common.sh"
 PLAN=$1; . "$PLAN"
+need dd
 
 TMP=/tmp/t75-postcheck.$$
-trap 'rm -f "$TMP"* /tmp/t75-post-loader.$$' EXIT INT TERM
+trap 'rm -f "$TMP"*' EXIT INT TERM
 read_metadata_to "$TMP"
 cur=$(metadata_committed "$TMP.1")
 booted=$(cmdline_slot)
@@ -16,8 +17,8 @@ fam=$(detect_current_family "$cur")
 [ "$fam" = "$DEST_FAMILY" ] || die "running family=$fam expected=$DEST_FAMILY"
 
 LOADER_MTD=$(find_mtd_num_by_name loader)
-nanddump -n -l 2097152 -f /tmp/t75-post-loader.$$ "/dev/mtd$LOADER_MTD" >/dev/null
-once=$(loader_env_get /tmp/t75-post-loader.$$ once)
+dd if="/dev/mtd$LOADER_MTD" of="$TMP.loader" bs=262144 count=8 2>/dev/null
+once=$(loader_env_get "$TMP.loader" once)
 [ "$once" = true ] || die "first-boot reset hook did not self-clear; once=$once"
 echo "PASS first-boot reset hook self-cleared"
 
