@@ -1,6 +1,10 @@
+<!-- SPDX-License-Identifier: GPL-2.0-or-later -->
+
 # Usage
 
 > Odido T75 -> generic Zyxel V5.18(ACHN.2.1)C0 has been validated on hardware. Reverse conversion and additional-device testing remain experimental. Keep UART attached and retain a verified full backup off-device.
+
+Starting from stock Odido firmware without a root shell? Follow [ODIDO_ACCESS.md](ODIDO_ACCESS.md) before using the converter.
 
 ## 1. Optional PC preprocessing
 

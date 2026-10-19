@@ -46,7 +46,7 @@ destination Linux recreates native shared state
 postcheck
 ```
 
-See [docs/HOWTO.md](docs/HOWTO.md) for the field-tested end-to-end procedure and [docs/USAGE.md](docs/USAGE.md) for command reference.
+Starting from stock Odido firmware? See [docs/ODIDO_ACCESS.md](docs/ODIDO_ACCESS.md) first to obtain the required root SSH shell. Then use [docs/HOWTO.md](docs/HOWTO.md) for the field-tested end-to-end conversion procedure and [docs/USAGE.md](docs/USAGE.md) for command reference.
 
 ## Artifact separation
 

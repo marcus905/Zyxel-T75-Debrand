@@ -1,8 +1,12 @@
+<!-- SPDX-License-Identifier: GPL-2.0-or-later -->
+
 # Field-tested Odido T75 -> generic Zyxel HOWTO
 
 This procedure documents the first successful hardware conversion of an Odido T75 / Zyxel EX7501-B0 to generic Zyxel **V5.18(ACHN.2.1)C0**.
 
 It is intentionally conservative: stage and verify first, commit only after hashes match, keep UART attached, and do not discard the original full NAND/loader backups.
+
+If you are starting from stock Odido firmware and do not already have a Linux root shell, complete [ODIDO_ACCESS.md](ODIDO_ACCESS.md) first. It documents the tested UART, supervisor-web, root-password recovery, and SSH-enablement procedure.
 
 ## What you need
 
