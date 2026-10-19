@@ -15,7 +15,7 @@ echo "PASS metadata: $(metadata_lines "$TMP.1" | tr '\n' ' ')"
 [ -f "$WORKDIR/destination-loader.sha256" ] || die "destination-loader.sha256 missing; commit not completed?"
 want=$(cat "$WORKDIR/destination-loader.sha256")
 LOADER_MTD=$(find_mtd_num_by_name loader)
-nanddump -n -l 2097152 -f /tmp/t75-loader-final.$$ "/dev/mtd$LOADER_MTD" >/dev/null
+dd if="/dev/mtd$LOADER_MTD" of=/tmp/t75-loader-final.$ bs=262144 count=8 2>/dev/null
 got=$(sha_file /tmp/t75-loader-final.$$)
 [ "$got" = "$want" ] || die "loader final SHA mismatch"
 echo "PASS loader SHA256=$got"

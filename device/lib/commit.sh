@@ -33,7 +33,7 @@ DEST_SHA=$(printf '%s\n' "$out" | sed -n 's/^DEST_LOADER_SHA256=//p' | tail -n1)
 flash_erase "/dev/mtd$LOADER_MTD" 0 0
 nandwrite -p "/dev/mtd$LOADER_MTD" "$RUN/loader.destination.bin"
 
-nanddump -n -l 2097152 -f "$RUN/loader.after.bin" "/dev/mtd$LOADER_MTD" >/dev/null
+dd if="/dev/mtd$LOADER_MTD" of="$RUN/loader.after.bin" bs=262144 count=8 2>/dev/null
 AFTER=$(sha_file "$RUN/loader.after.bin")
 [ "$AFTER" = "$DEST_SHA" ] || die "loader readback mismatch"
 
