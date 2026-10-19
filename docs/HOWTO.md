@@ -195,4 +195,4 @@ run bootcmd
 
 ## Validated result
 
-The first hardware test reached generic Zyxel **V5.18(ACHN.2.1)C0**, mounted `zydefault2`, initialized the default data model, brought up both Wi-Fi radios, and presented the generic EX7501-B0 web interface.
+The first hardware test reached generic Zyxel **V5.18(ACHN.2.1)C0**, mounted `zydefault2`, initialized the default data model, brought up both Wi-Fi radios, and presented the generic EX7501-B0 web interface. A normal second boot also succeeded. A factory reset performed from the generic firmware completed successfully and the device booted cleanly again afterward.

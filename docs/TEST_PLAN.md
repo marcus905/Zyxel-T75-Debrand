@@ -52,3 +52,16 @@ Capture the full UART log and use it to tighten the automated checks before a se
 - Require a successful `zydefaultN` mount in the first destination boot log.
 - Require the destination data model to initialize from `zcfg_schema.bin`.
 - Confirm management UI and both Wi-Fi radios after first boot.
+
+
+## Factory-reset regression
+
+Validated on the first converted Odido -> generic ACHN 2.1 device:
+
+- normal second boot after conversion succeeds;
+- factory reset from the generic firmware succeeds;
+- the subsequent boot succeeds;
+- generic defaults/shared state regenerate cleanly;
+- Wi-Fi and management UI return after reset.
+
+Repeat this regression on additional devices and after reverse-conversion support is validated.

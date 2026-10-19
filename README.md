@@ -6,7 +6,7 @@ The project deliberately separates **family conversion** from ordinary firmware 
 
 ## Current status
 
-The converter is built from offline analysis of complete stock and Odido NAND dumps plus public Zyxel firmware packages. An **Odido T75 -> generic Zyxel V5.18(ACHN.2.1)C0 conversion has now completed successfully on hardware**, including the destination U-Boot one-shot reset, generic `rootfs2` boot, `zydefault` mount, configuration initialization, Wi-Fi bring-up, and web UI. Reverse conversion and additional-device testing remain experimental. Keep UART attached and retain a verified full NAND backup off-device.
+The converter is built from offline analysis of complete stock and Odido NAND dumps plus public Zyxel firmware packages. An **Odido T75 -> generic Zyxel V5.18(ACHN.2.1)C0 conversion has now completed successfully on hardware**, including the destination U-Boot one-shot reset, generic `rootfs2` boot, `zydefault` mount, configuration initialization, Wi-Fi bring-up, web UI, a normal second boot, and a generic factory reset followed by another successful boot. Reverse conversion and additional-device testing remain experimental. Keep UART attached and retain a verified full NAND backup off-device.
 
 ## Repository layout
 
