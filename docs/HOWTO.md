@@ -13,7 +13,7 @@ If you are starting from stock Odido firmware and do not already have a Linux ro
 - root shell on the running Odido firmware;
 - UART connected and logging;
 - a USB stick containing this repository;
-- a prepared ACHN 2.1 source pack;
+- a prepared ACHN 2.1 Source Pack — see [SOURCE_PACK.md](SOURCE_PACK.md) for how to build one from the public Zyxel firmware package;
 - the bundled anonymized generic loader template at `templates/loader-generic.bin.gz`;
 - enough USB space for a full NAND backup.
 
@@ -69,7 +69,7 @@ Record the work directory printed by `prepare`:
 W=/mnt/usb1_sdb1/Zyxel-T75-Debrand/device/work/convert-YYYYMMDD-HHMMSS
 ```
 
-Verify that the full NAND backup and its SHA256 file exist.
+Verify that the full NAND backup and its SHA256 file exist. See [RECOVERY.md](RECOVERY.md) for what is captured and how those artifacts are intended to be used.
 
 ## 4. Stage the generic firmware into the inactive slot
 
@@ -89,7 +89,7 @@ zydefault   3301376 bytes
 zyfwinfo         256 bytes
 ```
 
-Important: `zydefault` is a **static** UBI volume with **23 reserved LEBs**, even though the current UBIFS image contains only 13 LEBs of data. The staging code must allocate the stock 23-LEB capacity and write only the 3,301,376-byte payload.
+Important: `zydefault` is a **static** UBI volume with **23 reserved LEBs**, even though the current UBIFS image contains only 13 LEBs of data. See [FLASH_LAYOUT.md](FLASH_LAYOUT.md) for the slot/volume layout. The staging code must allocate the stock 23-LEB capacity and write only the 3,301,376-byte payload.
 
 ## 5. Commit
 

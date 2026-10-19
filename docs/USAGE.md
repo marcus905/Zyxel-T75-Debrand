@@ -8,6 +8,8 @@ Starting from stock Odido firmware without a root shell? Follow [ODIDO_ACCESS.md
 
 ## 1. Optional PC preprocessing
 
+See [SOURCE_PACK.md](SOURCE_PACK.md) for the Source Pack format, supported inputs, ECC requirements, and family detection.
+
 Convert a public firmware or raw backup into a Source Pack:
 
 ```sh
@@ -111,4 +113,4 @@ The first live Odido -> generic conversion exposed two implementation details no
 - loader verification must use normal ECC-corrected MTD reads; raw `nanddump -n` can falsely report loader mismatches because it bypasses ECC;
 - `zydefault` must match the stock UBI geometry: **static**, **23 reserved LEBs**, while only the actual UBIFS payload bytes are written. ACHN 2.1's payload is 3,301,376 bytes (13 LEBs), but its UBIFS superblock allows growth beyond 13 LEBs, so a 13-LEB UBI volume will not mount.
 
-See [HOWTO.md](HOWTO.md) for the complete field-tested sequence.
+See [HOWTO.md](HOWTO.md) for the complete field-tested sequence, [RECOVERY.md](RECOVERY.md) for backup/recovery semantics, and [FLASH_LAYOUT.md](FLASH_LAYOUT.md) for the underlying MTD/UBI geometry.

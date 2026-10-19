@@ -1,3 +1,5 @@
+<!-- SPDX-License-Identifier: GPL-2.0-or-later -->
+
 # Loader and NVRAM
 
 ## 2 MiB loader
@@ -65,3 +67,10 @@ once=true
 ```
 
 They are reusable family baselines and must not be flashed directly.
+
+
+## Related documentation
+
+- [templates/README.md](../templates/README.md) — bundled template handling and audit procedure.
+- [LICENSING.md](LICENSING.md) — template provenance and licensing boundary.
+- [ARCHITECTURE.md](ARCHITECTURE.md) — how loader replacement fits into family conversion.

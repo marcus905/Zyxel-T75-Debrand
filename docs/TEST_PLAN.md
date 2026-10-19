@@ -1,3 +1,5 @@
+<!-- SPDX-License-Identifier: GPL-2.0-or-later -->
+
 # Hardware validation plan
 
 The first Odido -> generic ACHN 2.1 conversion has completed successfully on hardware. Use this plan for regression testing, reverse conversion, and additional devices.
@@ -65,3 +67,9 @@ Validated on the first converted Odido -> generic ACHN 2.1 device:
 - Wi-Fi and management UI return after reset.
 
 Repeat this regression on additional devices and after reverse-conversion support is validated.
+
+
+## Related documentation
+
+- [HOWTO.md](HOWTO.md) — field-tested baseline procedure.
+- [RECOVERY.md](RECOVERY.md) — recovery artifacts that must be retained during validation.

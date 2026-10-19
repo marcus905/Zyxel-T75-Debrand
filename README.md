@@ -16,7 +16,7 @@ The converter is built from offline analysis of complete stock and Odido NAND du
 - `device/lib/` — staging, metadata, loader-build, verification, backup and post-boot helpers.
 - `tools/` — PC-side source-pack normalizer and loader-template auditor.
 - `templates/` — anonymized generic/Odido loader templates plus metadata and provenance notes.
-- `docs/` — architecture, flash layout, source-pack format, loader/NVRAM details, recovery and test plan.
+- [`docs/`](docs/README.md) — guided documentation index covering access, Source Packs, conversion, architecture, recovery, and validation.
 
 ## Conversion flow
 
@@ -46,7 +46,7 @@ destination Linux recreates native shared state
 postcheck
 ```
 
-Starting from stock Odido firmware? See [docs/ODIDO_ACCESS.md](docs/ODIDO_ACCESS.md) first to obtain the required root SSH shell. Then use [docs/HOWTO.md](docs/HOWTO.md) for the field-tested end-to-end conversion procedure and [docs/USAGE.md](docs/USAGE.md) for command reference.
+Starting from stock Odido firmware? See [docs/ODIDO_ACCESS.md](docs/ODIDO_ACCESS.md) first to obtain the required root SSH shell. Build the destination firmware material as described in [docs/SOURCE_PACK.md](docs/SOURCE_PACK.md), then use [docs/HOWTO.md](docs/HOWTO.md) for the field-tested end-to-end conversion procedure. [docs/USAGE.md](docs/USAGE.md) is the concise command reference, and [docs/README.md](docs/README.md) links the complete documentation set.
 
 ## Artifact separation
 

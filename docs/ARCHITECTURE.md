@@ -1,3 +1,5 @@
+<!-- SPDX-License-Identifier: GPL-2.0-or-later -->
+
 # Architecture
 
 ## Scope
@@ -51,3 +53,11 @@ BCM4912 Boot ROM
 ## Trust-chain difference
 
 Odido and generic firmware are not just different root filesystems. Odido carries an additional RSA/signature path and `zyfwsignN` volume; the generic branch does not. The loader/environment semantics also differ, so the project treats conversion as a coherent family-stack transition rather than a mixed-image upgrade.
+
+
+## Related documentation
+
+- [SOURCE_PACK.md](SOURCE_PACK.md) — source normalization format.
+- [FLASH_LAYOUT.md](FLASH_LAYOUT.md) — concrete MTD/UBI slot layout.
+- [LOADER_NVRAM.md](LOADER_NVRAM.md) — loader environment personalization.
+- [HOWTO.md](HOWTO.md) — field-tested implementation of this design.

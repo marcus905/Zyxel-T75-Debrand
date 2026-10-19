@@ -1,3 +1,5 @@
+<!-- SPDX-License-Identifier: GPL-2.0-or-later -->
+
 # T75 Source Pack v1
 
 The source-pack format makes the on-device converter independent of where firmware material came from.
@@ -35,4 +37,13 @@ The tool primarily distinguishes families from `zyfwsign` presence and `zyfwinfo
 
 ## Why ECC-corrected logical UBI extraction matters
 
-Logical MTD dumps still contain UBI EC/VID headers, erase counters, wear-leveling history and obsolete physical PEBs. The source pack reconstructs logical UBI volume payloads and does not copy physical UBI placement into another device.\n\nDo **not** use a data-only dump captured with `nanddump -n`: that option bypasses NAND ECC, so corrected bit errors are lost and cannot be reconstructed later without the corresponding OOB/ECC information. Converter-generated full backups use ECC-corrected reads.
+Logical MTD dumps still contain UBI EC/VID headers, erase counters, wear-leveling history and obsolete physical PEBs. The source pack reconstructs logical UBI volume payloads and does not copy physical UBI placement into another device.
+
+Do **not** use a data-only dump captured with `nanddump -n`: that option bypasses NAND ECC, so corrected bit errors are lost and cannot be reconstructed later without the corresponding OOB/ECC information. Converter-generated full backups use ECC-corrected reads.
+
+
+## Related documentation
+
+- [HOWTO.md](HOWTO.md) — use a prepared Source Pack in the field-tested conversion.
+- [LOADER_NVRAM.md](LOADER_NVRAM.md) — loader/template personalization details.
+- [RECOVERY.md](RECOVERY.md) — converter backups that can be normalized into Source Packs.
