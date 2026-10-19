@@ -1,4 +1,5 @@
 #!/bin/sh
+# SPDX-License-Identifier: GPL-2.0-or-later
 set -eu
 
 die(){ echo "ERROR: $*" >&2; exit 1; }

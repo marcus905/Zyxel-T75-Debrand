@@ -1,4 +1,5 @@
 #!/bin/sh
+# SPDX-License-Identifier: GPL-2.0-or-later
 # Build destination-format 2MiB loader using current device identity/credentials.
 set -eu
 HERE=$(CDPATH= cd -- "$(dirname -- "$0")" && pwd)

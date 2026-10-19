@@ -1,3 +1,5 @@
+<!-- SPDX-License-Identifier: GPL-2.0-or-later -->
+
 # Zyxel T75 Debrand
 
 Experimental tooling and reverse-engineering notes for reversible family conversion of the Zyxel EX7501-B0 / Odido T75 between the Odido `ACDA` firmware family and generic Zyxel `ACHN` firmware.
@@ -57,7 +59,11 @@ For a conversion, provide a destination firmware/source pack separately; backups
 
 `tools/t75_sourcepack.py` anonymizes any loader extracted from a logical device dump before it is reused as a source-pack template. The original exact backup is never modified.
 
-See [docs/LICENSING.md](docs/LICENSING.md) for loader-template provenance and the Zyxel GPL/OSS source-request link.
+## License
+
+The original converter code and project documentation are licensed under **GNU GPL v2 or, at your option, any later version** (`GPL-2.0-or-later`). See [LICENSE](LICENSE).
+
+The bundled loader templates are third-party composite boot images and are **not relicensed by this project**. See [docs/LICENSING.md](docs/LICENSING.md) for their provenance and the Zyxel GPL/OSS source-request information.
 
 ## Important properties
 

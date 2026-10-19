@@ -1,4 +1,5 @@
 #!/bin/sh
+# SPDX-License-Identifier: GPL-2.0-or-later
 # Pure sh/awk extractor for Zyxel/Broadcom outer FIT update packages.
 set -eu
 HERE=$(CDPATH= cd -- "$(dirname -- "$0")" && pwd)

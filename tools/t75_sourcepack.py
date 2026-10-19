@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+# SPDX-License-Identifier: GPL-2.0-or-later
 """
 Normalize a Zyxel EX7501-B0 conversion source into T75 Source Pack v1.
 
