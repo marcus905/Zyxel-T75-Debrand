@@ -1,6 +1,6 @@
-# First hardware test plan
+# Hardware validation plan
 
-The first live conversion should be treated as an experiment, not a routine procedure.
+The first Odido -> generic ACHN 2.1 conversion has completed successfully on hardware. Use this plan for regression testing, reverse conversion, and additional devices.
 
 ## Before commit
 
@@ -39,3 +39,16 @@ Require:
 - normal management/network services available.
 
 Capture the full UART log and use it to tighten the automated checks before a second device is converted.
+
+
+## Regression checks learned from the first live run
+
+- USB checkout can be mounted `noexec`; verify scripts are executable after `mount -o remount,exec <mountpoint>`.
+- Verify loader writes through normal ECC-corrected MTD reads, not `nanddump -n`.
+- Assert `zydefault` geometry, not only payload hash:
+  - static UBI type;
+  - 23 reserved LEBs;
+  - payload bytes/hash match the source pack.
+- Require a successful `zydefaultN` mount in the first destination boot log.
+- Require the destination data model to initialize from `zcfg_schema.bin`.
+- Confirm management UI and both Wi-Fi radios after first boot.

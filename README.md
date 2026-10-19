@@ -6,7 +6,7 @@ The project deliberately separates **family conversion** from ordinary firmware 
 
 ## Current status
 
-The converter is built from offline analysis of complete stock and Odido NAND dumps plus public Zyxel firmware packages. The scripts are fail-closed and have been structurally validated, but the complete cross-family conversion path has **not yet been validated on hardware**. The first run should be performed phase-by-phase with UART attached and a full NAND backup stored off-device.
+The converter is built from offline analysis of complete stock and Odido NAND dumps plus public Zyxel firmware packages. An **Odido T75 -> generic Zyxel V5.18(ACHN.2.1)C0 conversion has now completed successfully on hardware**, including the destination U-Boot one-shot reset, generic `rootfs2` boot, `zydefault` mount, configuration initialization, Wi-Fi bring-up, and web UI. Reverse conversion and additional-device testing remain experimental. Keep UART attached and retain a verified full NAND backup off-device.
 
 ## Repository layout
 
@@ -44,7 +44,7 @@ destination Linux recreates native shared state
 postcheck
 ```
 
-See [docs/USAGE.md](docs/USAGE.md) before running anything.
+See [docs/HOWTO.md](docs/HOWTO.md) for the field-tested end-to-end procedure and [docs/USAGE.md](docs/USAGE.md) for command reference.
 
 ## Artifact separation
 
